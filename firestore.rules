@@ -1,0 +1,91 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny-all safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Collaborators & Store Owners with full editing and management privileges
+    function isCollaborator() {
+      return isSignedIn() && (
+        (request.auth.token.email != null && (
+          request.auth.token.email.lower() == 'mayumihairaccessories@gmail.com' ||
+          request.auth.token.email.lower() == 'bsentrep.poyaoanjlt@gmail.com' ||
+          request.auth.token.email.lower() == 'jhonleepoyaoan7@gmail.com' ||
+          request.auth.token.email.lower() == 'maria.burdeos@gmail.com' ||
+          request.auth.token.email.lower() == 'rosa.gabitan@gmail.com' ||
+          request.auth.token.email.lower() == 'maryjane.judilla@gmail.com' ||
+          request.auth.token.email.lower() == 'jennifer.nicolas@gmail.com' ||
+          request.auth.token.email.lower() == 'resha.labanada@gmail.com'
+        )) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidProduct(data) {
+      return data.id is string && data.id.size() > 0 && data.id.size() <= 128 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 250 &&
+             data.price is number && data.price >= 0 &&
+             data.category is string && data.category.size() <= 100;
+    }
+
+    // --- PRODUCTS COLLECTION ---
+    // Public visitors can view the hair clip collection
+    // Authorized collaborators can create, edit, or permanently delete products
+    match /products/{productId} {
+      allow read: if true;
+      allow create: if (isCollaborator() || isSignedIn()) && isValidId(productId) && isValidProduct(incoming());
+      allow update: if (isCollaborator() || isSignedIn()) && isValidId(productId) && isValidProduct(incoming());
+      allow delete: if (isCollaborator() || isSignedIn()) && isValidId(productId);
+    }
+
+    // --- SITE CONTENT COLLECTION ---
+    // Dynamic website announcements and section copy
+    match /content/{contentDocId} {
+      allow read: if true;
+      allow write: if (isCollaborator() || isSignedIn()) && isValidId(contentDocId);
+    }
+
+    // --- STORE SETTINGS COLLECTION ---
+    match /settings/{settingDocId} {
+      allow read: if true;
+      allow write: if isCollaborator() && isValidId(settingDocId);
+    }
+
+    // --- ADMINS & COLLABORATORS COLLECTION ---
+    match /admins/{adminId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn() && (request.auth.uid == adminId || isCollaborator()) && isValidId(adminId);
+    }
+
+    // --- ORDERS COLLECTION ---
+    // Customers can submit inquiries; only collaborators can view and manage orders
+    match /orders/{orderId} {
+      allow create: if isValidId(orderId) &&
+                       incoming().customerName is string && incoming().customerName.size() > 0 &&
+                       incoming().totalAmount is number &&
+                       incoming().status is string;
+      allow read, update, delete: if isCollaborator() && isValidId(orderId);
+    }
+
+    // --- HEALTH CHECK ---
+    match /test/connection {
+      allow read: if true;
+    }
+  }
+}

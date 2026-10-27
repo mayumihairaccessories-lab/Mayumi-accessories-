@@ -1,0 +1,365 @@
+import { MayumiStoreState } from '../types/store';
+
+export const initialStoreData: MayumiStoreState = {
+  adminPin: '2026',
+  settings: {
+    customDomain: 'www.mayumiaccessories.com',
+    adminPin: '2026',
+    ownerEmail: 'mayumihairaccessories@gmail.com',
+    collaboratorEmails: [
+      'mayumihairaccessories@gmail.com',
+      'bsentrep.poyaoanjlt@gmail.com',
+      'jhonleepoyaoan7@gmail.com',
+      'maria.burdeos@gmail.com',
+      'rosa.gabitan@gmail.com',
+      'maryjane.judilla@gmail.com',
+      'jennifer.nicolas@gmail.com',
+      'resha.labanada@gmail.com'
+    ],
+    orderLink: 'https://www.facebook.com/profile.php?id=61568215620941',
+    orderLinkLabel: 'Order via Facebook Page',
+    isPrivateStore: false,
+    customerPasscode: 'MAYUMI',
+    instagramUsername: 'mayumihairaccessories',
+    facebookPageId: '61568215620941',
+    gcashNumber: '0917-555-MAYU',
+    viberNumber: '0917-555-8921'
+  },
+  products: [
+    {
+      id: 'prod-01',
+      name: 'Floral Story',
+      tagline: 'Playful petals and soft colors',
+      description: 'Carefully shaped floral clay hair clip with pastel blush accents, soft lavender hues, and a resilient alligator grip. Perfect for daily campus wear, Sunday brunch, or clean half-up hairstyles.',
+      price: 250,
+      size: 'Both Sizes Available',
+      image: '/images/product-floral-story.jpeg',
+      category: 'Floral',
+      inStock: true,
+      stockCount: 14,
+      isFeatured: true,
+      video: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-an-artisan-sculpting-clay-on-a-pottery-wheel-41221-large.mp4',
+      videoType: 'file',
+      videoTitle: 'Handcrafted Clay Artisanship & Shine Preview',
+      createdAt: '2026-10-01T08:00:00Z',
+      updatedBy: 'Maria Katrina Burdeos'
+    },
+    {
+      id: 'prod-02',
+      name: 'Garden Pop',
+      tagline: 'A little color for your everyday',
+      description: 'Bright and cheerful handcrafted botanical petals molded with our proprietary lightweight non-toxic clay. Adds an effortless, artsy Filipina spark to your uniform or casual fit.',
+      price: 250,
+      size: 'Both Sizes Available',
+      image: '/images/product-garden-pop.jpeg',
+      category: 'Whimsical',
+      inStock: true,
+      stockCount: 18,
+      isFeatured: true,
+      createdAt: '2026-10-05T09:30:00Z',
+      updatedBy: 'Rosa Vilma Gabitan'
+    },
+    {
+      id: 'prod-03',
+      name: 'Bloom in Bloom',
+      tagline: 'Whimsical details, made by hand',
+      description: 'Intricately layered floral petals and delicate sculpted leaves. Baked for lightweight strength and coated with a protective satin seal that withstands tropical humidity.',
+      price: 250,
+      size: 'Both Sizes Available',
+      image: '/images/product-bloom-in-bloom.jpeg',
+      category: 'Floral',
+      inStock: true,
+      stockCount: 9,
+      isFeatured: true,
+      createdAt: '2026-10-08T11:00:00Z',
+      updatedBy: 'Mary Jane Judilla'
+    },
+    {
+      id: 'prod-04',
+      name: 'Pastel Sampaguita Blossom',
+      tagline: 'Filipina heritage in modern bloom',
+      description: 'Inspired by the national flower of the Philippines with a modern pastel lilac twist. Hand-sculpted petal by petal with our signature velvety clay finish.',
+      price: 250,
+      size: 'Gamay (Small · 3.2 cm)',
+      image: '/images/hero-product.jpg',
+      category: 'Bestsellers',
+      inStock: true,
+      stockCount: 12,
+      isFeatured: true,
+      createdAt: '2026-10-12T14:15:00Z',
+      updatedBy: 'Jennifer Nicolas'
+    },
+    {
+      id: 'prod-05',
+      name: 'Harana Sweetheart Duo Set',
+      tagline: 'Coordinated Gamay and Dako pair',
+      description: 'Set of two complementary clay clips (1 Gamay 3.2cm for front side-swept hair + 1 Dako 5.5cm for full ponytail hold). Includes keepsake organza gift pouch and care card.',
+      price: 450,
+      size: 'Curated Pair / Set',
+      image: '/images/craft-art.jpg',
+      category: 'Sets',
+      inStock: true,
+      stockCount: 8,
+      isFeatured: true,
+      createdAt: '2026-10-15T16:00:00Z',
+      updatedBy: 'Resha Labanada'
+    }
+  ],
+  content: {
+    announcement: 'Handmade with care, inspired by Filipino creativity ✿ Pop-up Booth now open in SJDM Bulacan!',
+    hero: {
+      eyebrow: 'LITTLE PIECES OF ART',
+      title: 'Wear your',
+      emphasis: 'own kind of beautiful.',
+      description: 'Handmade clay hair clips made to celebrate creativity, femininity, and your own unique style. Hulma ng Sining, Likha ng Filipina.',
+      noteTitle: 'Made by hand,',
+      noteSubtitle: 'with a little Filipino heart.',
+      stickerTitle: 'HULMA',
+      stickerSub: 'NG SINING'
+    },
+    story: {
+      kicker: '01 — OUR STORY',
+      heading: 'Not just a hair clip.',
+      emphasis: 'A little piece of you.',
+      paragraph1: 'MAYUMI is a Filipino handmade hair accessory brand that turns clay into small pieces of wearable art. Every design begins with an idea, shaped by hand and finished with care.',
+      paragraph2: 'Inspired by creativity, culture, and contemporary femininity, we make accessories that invite you to express yourself in your own way—one colorful detail at a time. Proudly student-founded and operated in San Jose del Monte, Bulacan.',
+      values: [
+        {
+          icon: '✳',
+          title: 'Handmade with Heart',
+          desc: 'Every single piece is mixed, sculpted, detailed, and cured by our team of five artisans.'
+        },
+        {
+          icon: '✿',
+          title: 'Expressive & Vibrant',
+          desc: 'Play with cheerful pastels, blooming petals, and silhouettes that complement everyday school or workday fits.'
+        },
+        {
+          icon: '♡',
+          title: 'Filipina-Inspired',
+          desc: 'Celebrating local craftsmanship and youthful creativity, designed to be accessible and student-budget friendly.'
+        }
+      ]
+    },
+    craft: {
+      kicker: '03 — OUR CRAFT',
+      heading: 'Shaped slowly.',
+      emphasis: 'Made with meaning.',
+      description: 'Our process starts with design planning and material preparation, then moves through shaping, detailing, drying, finishing, assembly, and quality checking. Each step helps bring the idea to life.',
+      badgeTitle: 'A little art',
+      badgeSub: 'you can wear ✦',
+      steps: [
+        {
+          num: '01',
+          title: 'Design & Shape',
+          desc: 'Color conditioning our custom non-toxic clay, slicing precise slabs, and hand-sculpting each petal and leaf.'
+        },
+        {
+          num: '02',
+          title: 'Detail & Finish',
+          desc: 'Adding textural veining, curing for lightweight durability, and sealing with a protective water-resistant coat.'
+        },
+        {
+          num: '03',
+          title: 'Check & Prepare',
+          desc: 'Reinforcing secure anti-snag metal clips, inspecting under light, and packaging in eco-friendly custom backing cards.'
+        }
+      ],
+      note: 'MAYUMI is designed around handcrafted production, thoughtful details, and rigorous quality checking before products reach our customers.'
+    },
+    pricing: {
+      title: 'Simple, student-friendly',
+      emphasis: 'pricing.',
+      lead: 'Every MAYUMI clip is shaped by hand from our own non-toxic clay, and priced fairly so everyone can wear a piece of art.',
+      basePrice: 250,
+      gamayTitle: 'Gamay',
+      gamaySub: 'Small · 3.2 cm clip',
+      gamayDesc: 'Ideal for subtle bangs, accent styling, school uniform days, and half-up fringes.',
+      dakoTitle: 'Dako',
+      dakoSub: 'Big · 5.5 cm clip',
+      dakoDesc: 'Bold statement looks, thicker hair hold, event styling, and standout casual fits.',
+      note: 'MAYUMI Sets pair coordinated clips that mix and match. Custom color palettes available upon request.',
+      features: [
+        {
+          title: '100% Handcrafted',
+          desc: 'Each piece is hand-shaped, so no two clips are ever identical.'
+        },
+        {
+          title: 'Non-Toxic Custom Clay',
+          desc: 'Gentle on skin and hair, odorless, and durable for daily wear.'
+        },
+        {
+          title: 'Lightweight Alligator Clip',
+          desc: 'Stays in place without pulling or snagging your hair strands.'
+        },
+        {
+          title: 'Easy to Pair',
+          desc: 'Colors that match casual OOTDs, school uniforms, and event attire.'
+        }
+      ]
+    },
+    popup: {
+      kicker: 'VISIT & ORDER',
+      heading: 'Find us in Bulacan, or',
+      emphasis: 'order online.',
+      storeName: 'MAYUMI Pop-Up BoothSJDM Bulacan',
+      locationDesc: 'Minuyan, San Jose del Monte City, Bulacan (near City College of San Jose del Monte). We also set up regular booths at school bazaars, community fairs, and weekend creative markets.',
+      hoursNote: 'Store hours may adjust during school exam weeks and special bazaar pop-up appearances. Follow our social pages for weekly event announcements!',
+      hours: [
+        { days: 'Monday – Thursday', time: '10:00 AM – 8:00 PM' },
+        { days: 'Friday – Saturday', time: '10:00 AM – 9:00 PM' },
+        { days: 'Sunday', time: '10:00 AM – 8:00 PM' }
+      ],
+      nextEventTitle: 'Upcoming Campus & City Pop-Up Bazaar',
+      nextEventDetails: 'Catch our live clay sculpting demo and exclusive bazaar-only clip designs this weekend at Minuyan Commercial Center!',
+      orderSteps: [
+        'Browse our collection and pick your favorite design and clip size (Gamay or Dako).',
+        'Reserve your clip through our online order drawer or message us on Instagram / Facebook.',
+        'Choose whether to pick up at our Minuyan SJDM booth or arrange local delivery.',
+        'Settle payment via GCash, Maya, or Cash on Pickup/Meet-up.',
+        'We prepare, hand-inspect, and package your unique MAYUMI clay piece with care.'
+      ]
+    },
+    quote: {
+      text: '“Hulma ng Sining,',
+      emphasis: 'Likha ng Filipina.”',
+      sub: 'A small celebration of Filipino creativity, craftsmanship, and sisterhood.'
+    },
+    contact: {
+      kicker: '04 — LET\'S CONNECT',
+      heading: 'Found a piece that feels',
+      emphasis: 'like you?',
+      description: 'For product questions, custom design inquiries, wholesale school giveaways, or updates about upcoming pop-up appearances, send us an email or message the MAYUMI team.',
+      email: 'mayumihairaccessories@gmail.com',
+      instagram: 'https://www.instagram.com/mayumihairaccessories/',
+      facebook: 'https://www.facebook.com/profile.php?id=61568215620941',
+      tiktok: 'https://www.tiktok.com/@mayumihairaccessories',
+      footnote: 'MAYUMI is proudly owned and operated by five Filipina business partners: Maria Katrina Burdeos, Rosa Vilma Gabitan, Mary Jane Judilla, Jennifer Nicolas, and Resha Labanada. Salamat for supporting local handmade Filipino creativity!'
+    }
+  },
+  teamMembers: [
+    {
+      id: 'partner-1',
+      name: 'Maria Katrina Burdeos',
+      email: 'maria.burdeos@gmail.com',
+      role: 'Lead Artisan & Product Design',
+      bio: 'Heads clay conditioning, color formulation, and floral sculpting techniques.',
+      isOwner: true,
+      canEdit: true,
+      avatarColor: 'bg-rose-100 text-rose-800'
+    },
+    {
+      id: 'partner-2',
+      name: 'Rosa Vilma Gabitan',
+      email: 'rosa.gabitan@gmail.com',
+      role: 'Quality Control & Finishing',
+      bio: 'Inspects every clip post-curing, tests clip grip durability, and ensures smooth edges.',
+      isOwner: true,
+      canEdit: true,
+      avatarColor: 'bg-purple-100 text-purple-800'
+    },
+    {
+      id: 'partner-3',
+      name: 'Mary Jane Judilla',
+      email: 'maryjane.judilla@gmail.com',
+      role: 'Operations & Raw Material Sourcing',
+      bio: 'Manages clay inventory, hardware supply, and workshop scheduling.',
+      isOwner: true,
+      canEdit: true,
+      avatarColor: 'bg-pink-100 text-pink-800'
+    },
+    {
+      id: 'partner-4',
+      name: 'Jennifer Nicolas',
+      email: 'jennifer.nicolas@gmail.com',
+      role: 'Marketing, Social Media & Content',
+      bio: 'Creates TikTok and Instagram reels, designs promotional materials, and responds to online inquiries.',
+      isOwner: true,
+      canEdit: true,
+      avatarColor: 'bg-amber-100 text-amber-800'
+    },
+    {
+      id: 'partner-5',
+      name: 'Resha Labanada',
+      email: 'resha.labanada@gmail.com',
+      role: 'Finance & Pop-up Booth Logistics',
+      bio: 'Handles project accounting, bazaar booth setup, cash/GCash transactions, and pickup schedules.',
+      isOwner: true,
+      canEdit: true,
+      avatarColor: 'bg-emerald-100 text-emerald-800'
+    }
+  ],
+  orders: [
+    {
+      id: 'MYM-1001',
+      customerName: 'Bea Alonzo Santos',
+      contactNumber: '0917-555-8921',
+      socialHandle: '@beasan_to',
+      email: 'bea.santos@gmail.com',
+      fulfillmentType: 'popup-pickup',
+      preferredDate: 'Saturday afternoon',
+      items: [
+        {
+          productId: 'prod-01',
+          productName: 'Floral Story',
+          size: 'Dako (Big · 5.5 cm)',
+          price: 250,
+          quantity: 1
+        },
+        {
+          productId: 'prod-02',
+          productName: 'Garden Pop',
+          size: 'Gamay (Small · 3.2 cm)',
+          price: 250,
+          quantity: 1
+        }
+      ],
+      totalAmount: 500,
+      notes: 'Please pack in gift pouch if possible, for my sister birthday!',
+      status: 'Ready for Pickup',
+      paymentMethod: 'GCash / Maya',
+      createdAt: '2026-10-21T10:15:00Z',
+      managedBy: 'Resha Labanada'
+    },
+    {
+      id: 'MYM-1002',
+      customerName: 'Alyssa Mae Ramos',
+      contactNumber: '0928-444-1290',
+      socialHandle: '@alyssamae.r',
+      email: 'alyssaramos@student.edu.ph',
+      fulfillmentType: 'local-meetup',
+      preferredDate: 'Monday near City College SJDM',
+      items: [
+        {
+          productId: 'prod-04',
+          productName: 'Pastel Sampaguita Blossom',
+          size: 'Gamay (Small · 3.2 cm)',
+          price: 250,
+          quantity: 2
+        }
+      ],
+      totalAmount: 500,
+      notes: 'Meetup during lunch break in front of campus gate.',
+      status: 'Confirmed',
+      paymentMethod: 'Cash on Pickup / Meet-up',
+      createdAt: '2026-10-22T14:40:00Z',
+      managedBy: 'Jennifer Nicolas'
+    }
+  ],
+  activityLogs: [
+    {
+      id: 'log-1',
+      timestamp: '2026-10-23T08:30:00Z',
+      member: 'Maria Katrina Burdeos',
+      action: 'Launched Project Website',
+      details: 'Published initial MAYUMI catalog with 5 handcrafted clay clips.'
+    },
+    {
+      id: 'log-2',
+      timestamp: '2026-10-23T11:20:00Z',
+      member: 'Resha Labanada',
+      action: 'Updated Pop-up Schedule',
+      details: 'Added Minuyan SJDM booth schedule and bazaar announcement.'
+    }
+  ]
+};

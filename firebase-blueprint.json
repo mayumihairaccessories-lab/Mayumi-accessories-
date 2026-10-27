@@ -1,0 +1,172 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Handmade clay hair clip item in the MAYUMI catalog",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique product identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the hair clip",
+          "maxLength": 100
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Short poetic tagline",
+          "maxLength": 150
+        },
+        "description": {
+          "type": "string",
+          "description": "Product craftsmanship and detail description",
+          "maxLength": 2000
+        },
+        "price": {
+          "type": "number",
+          "description": "Price in Philippine Pesos (PHP)"
+        },
+        "size": {
+          "type": "string",
+          "description": "Clip size (Gamay, Dako, Both, or Curated Set)"
+        },
+        "image": {
+          "type": "string",
+          "description": "Primary photo URL"
+        },
+        "images": {
+          "type": "array",
+          "description": "Gallery photo URLs"
+        },
+        "video": {
+          "type": "string",
+          "description": "Product video clip URL or embed link"
+        },
+        "videoType": {
+          "type": "string",
+          "description": "Type of video: file, youtube, tiktok, etc."
+        },
+        "videoTitle": {
+          "type": "string",
+          "description": "Title or caption for the video"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category name (Floral, Whimsical, Bestsellers, Sets)"
+        },
+        "inStock": {
+          "type": "boolean",
+          "description": "Availability flag"
+        },
+        "stockCount": {
+          "type": "number",
+          "description": "Remaining inventory quantity"
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "description": "Whether to highlight on homepage"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "Name or email of collaborator who updated the product"
+        }
+      },
+      "required": ["id", "name", "price", "category", "inStock"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized collaborator or store owner with editing privileges",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Collaborator authorized email"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role in MAYUMI Accessories"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the collaborator"
+        }
+      },
+      "required": ["email", "role"]
+    },
+    "SiteContent": {
+      "title": "SiteContent",
+      "description": "Website copy, banners, and announcement texts",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "object",
+          "description": "Full structured site copy"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp of last modification"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "Collaborator who modified the content"
+        }
+      }
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order details from web inquiries",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Order reference ID"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Customer name"
+        },
+        "contactNumber": {
+          "type": "string",
+          "description": "Mobile or phone number"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Total order amount in PHP"
+        },
+        "status": {
+          "type": "string",
+          "description": "Order status: Pending, Confirmed, Completed, etc."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp"
+        }
+      },
+      "required": ["id", "customerName", "totalAmount", "status"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Handcrafted clay hair clip catalog documents"
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/Admin" },
+      "description": "Authorized collaborators and store administrators"
+    },
+    "/content/{contentDocId}": {
+      "schema": { "$ref": "#/entities/SiteContent" },
+      "description": "Dynamic website content and announcements"
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Customer order inquiries"
+    }
+  }
+}
