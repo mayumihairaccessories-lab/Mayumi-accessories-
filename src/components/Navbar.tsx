@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lock, UserCheck, Menu, X, ExternalLink } from 'lucide-react';
+import { Lock, UserCheck, Menu, X, ExternalLink, Share2 } from 'lucide-react';
 import { SiteContent, TeamMember, StoreSettings } from '../types/store';
 
 interface NavbarProps {
@@ -17,6 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   settings,
   activeMember,
   onOpenPortal,
+  onOpenShareModal,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const orderUrl = settings?.orderLink || 'https://www.facebook.com/profile.php?id=61568215620941';
@@ -80,9 +81,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
           </nav>
 
-          {/* Action Buttons: Order via Socials & Collaborator Gmail Login (Removed .com Link button) */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Action Buttons: Share Website Link, Order via Socials & Collaborator Gmail Login */}
+          <div className="flex items-center gap-2 sm:gap-2.5">
             
+            {/* Share Website Link Button */}
+            <button
+              onClick={onOpenShareModal}
+              title="Share MAYUMI Website Link"
+              aria-label="Share website link"
+              className="px-3 py-2 bg-[#f2dce5] text-[#583e61] hover:bg-[#ebd0dc] text-xs font-semibold rounded-sm transition-all flex items-center gap-1.5 border border-[#d6a9bd] shadow-2xs hover:shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d989a5] cursor-pointer"
+            >
+              <Share2 className="w-3.5 h-3.5 text-[#bd7896]" />
+              <span className="hidden sm:inline">Share Link</span>
+              <span className="sm:hidden">Share</span>
+            </button>
+
             {/* Direct Link to Order on Pages */}
             <a
               href="#visit"
@@ -180,6 +193,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
 
             <div className="pt-2 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenShareModal?.();
+                }}
+                className="w-full py-2.5 px-3 text-center text-xs font-semibold bg-[#f2dce5] border border-[#d6a9bd] text-[#583e61] rounded-sm flex items-center justify-center gap-2 hover:bg-[#ebd0dc] transition-colors"
+              >
+                <Share2 className="w-3.5 h-3.5 text-[#bd7896]" />
+                <span>Share Website Link</span>
+              </button>
+
               <a
                 href={orderUrl}
                 target="_blank"

@@ -1,12 +1,13 @@
 import React from 'react';
 import { SiteContent } from '../types/store';
-import { Mail, Instagram, Facebook, Video, ArrowUpRight } from 'lucide-react';
+import { Mail, Instagram, Facebook, Video, ArrowUpRight, Share2 } from 'lucide-react';
 
 interface ContactSectionProps {
   content: SiteContent;
+  onOpenShareModal?: () => void;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ content, onOpenShareModal }) => {
   const { contact } = content;
 
   return (
@@ -104,6 +105,28 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
           <p className="text-xs text-[#e2d6e4]">
             Follow our social stories for weekly pop-up schedules, school bazaar appearances, and new clay batch drops.
           </p>
+
+          {/* Share Website Link Callout */}
+          {onOpenShareModal && (
+            <div className="mt-6 pt-5 border-t border-white/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white/10 p-3.5 rounded-lg">
+              <div>
+                <strong className="block text-xs text-white font-medium">
+                  Love MAYUMI Handmade Clips?
+                </strong>
+                <p className="text-[11px] text-[#e5b6cc]">
+                  Share our online catalog link with your friends and classmates!
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={onOpenShareModal}
+                className="px-3.5 py-2 bg-[#f2dce5] hover:bg-white text-[#583e61] text-xs font-semibold rounded-sm transition-all flex items-center gap-1.5 shrink-0 shadow-xs cursor-pointer active:scale-95"
+              >
+                <Share2 className="w-3.5 h-3.5 text-[#bd7896]" />
+                <span>Share Website</span>
+              </button>
+            </div>
+          )}
         </div>
 
       </div>

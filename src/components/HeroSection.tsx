@@ -1,13 +1,14 @@
 import React from 'react';
 import { SiteContent } from '../types/store';
-import { ArrowDownRight } from 'lucide-react';
+import { ArrowDownRight, Share2 } from 'lucide-react';
 
 interface HeroSectionProps {
   content: SiteContent;
   onExploreClick: () => void;
+  onOpenShareModal?: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ content, onExploreClick }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ content, onExploreClick, onOpenShareModal }) => {
   const { hero } = content;
 
   return (
@@ -35,14 +36,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ content, onExploreClic
             </p>
 
             {/* Action Buttons */}
-            <div className="flex items-center gap-5 sm:gap-6 flex-wrap">
+            <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
               <button
                 onClick={onExploreClick}
-                className="inline-flex items-center justify-between gap-6 px-5 py-3.5 bg-[#29232b] text-white text-xs sm:text-[13px] font-medium tracking-wide hover:-translate-y-0.5 hover:bg-[#3d3440] transition-all shadow-sm rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d989a5]"
+                className="inline-flex items-center justify-between gap-4 sm:gap-6 px-5 py-3.5 bg-[#29232b] text-white text-xs sm:text-[13px] font-medium tracking-wide hover:-translate-y-0.5 hover:bg-[#3d3440] transition-all shadow-sm rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d989a5] cursor-pointer"
               >
                 <span>Explore the collection</span>
                 <ArrowDownRight className="w-4 h-4 text-[#d989a5]" />
               </button>
+
+              {onOpenShareModal && (
+                <button
+                  type="button"
+                  onClick={onOpenShareModal}
+                  className="inline-flex items-center gap-2 px-4 py-3.5 bg-[#f2dce5] hover:bg-[#edd0dc] border border-[#d6a9bd] text-[#583e61] text-xs sm:text-[13px] font-semibold rounded-sm transition-all shadow-2xs hover:shadow-xs cursor-pointer active:scale-95"
+                  title="Share MAYUMI Website Link"
+                >
+                  <Share2 className="w-4 h-4 text-[#bd7896]" />
+                  <span>Share Website</span>
+                </button>
+              )}
 
               <a
                 href="#story"

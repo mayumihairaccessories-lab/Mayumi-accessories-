@@ -790,7 +790,19 @@ export const PartnerPortalModal: React.FC<PartnerPortalModalProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Share Website Link button */}
+            <button
+              type="button"
+              onClick={onOpenShareModal}
+              title="Open Website Share Link & QR Code"
+              className="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-white/15 hover:bg-white/25 text-[#fff7fb] border border-white/20 text-xs font-semibold rounded-sm transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
+            >
+              <Share2 className="w-3.5 h-3.5 text-[#e5b6cc]" />
+              <span className="hidden sm:inline">Share Website Link</span>
+              <span className="sm:hidden">Share</span>
+            </button>
+
             {activeMember && (
               <div className="hidden sm:flex items-center gap-2 px-2.5 py-1 bg-white/10 rounded-sm text-xs text-[#fff7fb]">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />

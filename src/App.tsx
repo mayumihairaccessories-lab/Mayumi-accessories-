@@ -41,6 +41,7 @@ import { SizeGuideModal } from './components/SizeGuideModal';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { ShareLiveModal } from './components/ShareLiveModal';
 import { PartnerPortalModal } from './components/PartnerPortalModal';
+import { Share2 } from 'lucide-react';
 
 export default function App() {
   const [store, setStore] = useState<MayumiStoreState>(initialStoreData);
@@ -439,6 +440,7 @@ export default function App() {
               const el = document.getElementById('collection');
               el?.scrollIntoView({ behavior: 'smooth' });
             }}
+            onOpenShareModal={() => setIsShareModalOpen(true)}
           />
 
           <TickerBar />
@@ -479,6 +481,7 @@ export default function App() {
 
           <ContactSection
             content={store.content}
+            onOpenShareModal={() => setIsShareModalOpen(true)}
           />
         </main>
       )}
@@ -486,6 +489,7 @@ export default function App() {
       {/* Footer */}
       <Footer
         onOpenPortal={() => setIsPortalOpen(true)}
+        onOpenShareModal={() => setIsShareModalOpen(true)}
         customDomain={store.settings?.customDomain}
       />
 
@@ -556,6 +560,18 @@ export default function App() {
           </button>
         </div>
       )}
+
+      {/* Floating Quick Share Website Button */}
+      <button
+        type="button"
+        onClick={() => setIsShareModalOpen(true)}
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-30 bg-[#583e61] hover:bg-[#432d4b] text-white px-3.5 py-2.5 sm:px-4 sm:py-2.5 rounded-full shadow-lg hover:shadow-2xl border border-white/20 flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-xs group"
+        title="Share MAYUMI Website Link"
+        aria-label="Share MAYUMI website link"
+      >
+        <Share2 className="w-3.5 h-3.5 text-[#f2dce5] group-hover:rotate-12 transition-transform" />
+        <span className="tracking-wide">Share Link</span>
+      </button>
     </div>
   );
 }

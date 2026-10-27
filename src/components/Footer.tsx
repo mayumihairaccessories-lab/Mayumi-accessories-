@@ -1,12 +1,13 @@
 import React from 'react';
-import { ArrowUp, Lock } from 'lucide-react';
+import { ArrowUp, Lock, Share2 } from 'lucide-react';
 
 interface FooterProps {
   onOpenPortal: () => void;
+  onOpenShareModal?: () => void;
   customDomain?: string;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenPortal }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenPortal, onOpenShareModal }) => {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -30,11 +31,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPortal }) => {
           </div>
 
           {/* Center Links & Secure Collab Access */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4 sm:gap-5 flex-wrap justify-center">
+            {onOpenShareModal && (
+              <button
+                onClick={onOpenShareModal}
+                title="Share MAYUMI Website Link with friends & customers"
+                className="inline-flex items-center gap-1.5 text-xs text-[#766a75] hover:text-[#583e61] transition-colors cursor-pointer"
+              >
+                <Share2 className="w-3.5 h-3.5 text-[#bd7896]" />
+                <span className="font-medium text-[11px]">Share Website</span>
+              </button>
+            )}
+
             <button
               onClick={onOpenPortal}
               title="Only for owner and authorized collaborators (Protected with Gmail & PIN)"
-              className="inline-flex items-center gap-1.5 text-xs text-[#766a75] hover:text-[#583e61] transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs text-[#766a75] hover:text-[#583e61] transition-colors cursor-pointer"
             >
               <Lock className="w-3 h-3 text-[#bd7896]" />
               <span className="font-medium text-[11px]">Collaborator Access</span>
@@ -42,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPortal }) => {
 
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1 text-[11px] font-mono tracking-widest text-[#29232b] hover:text-[#b25e80] transition-colors uppercase"
+              className="inline-flex items-center gap-1 text-[11px] font-mono tracking-widest text-[#29232b] hover:text-[#b25e80] transition-colors uppercase cursor-pointer"
             >
               <span>Back to top</span>
               <ArrowUp className="w-3.5 h-3.5" />
